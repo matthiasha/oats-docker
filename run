@@ -1,0 +1,3 @@
+#!/bin/bash
+docker build -t perso-ubu .
+docker run -p 22 -p 8888 -d -v /local/home/mhafn/docker-cfg/docker-home:/home/mzhafn perso-ubu
