@@ -3,6 +3,8 @@ MAINTAINER hafner87@gmail.com
 
 RUN apt-get update
 RUN apt-get install -y openssh-server supervisor python tmux zsh git vim build-essential python-dev sudo mosh
+# lxml deps
+RUN apt-get install -y libxml2-dev libxslt1-dev
 
 RUN locale-gen en_US.UTF-8  
 ENV LANG en_US.UTF-8  
