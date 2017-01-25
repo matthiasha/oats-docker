@@ -1,10 +1,11 @@
 FROM ubuntu:15.04
 MAINTAINER hafner87@gmail.com
 
+RUN dpkg --add-architecture i386
 RUN apt-get update
-RUN apt-get install -y openssh-server supervisor python tmux zsh git vim build-essential python-dev sudo mosh
-# lxml deps
-RUN apt-get install -y libxml2-dev libxslt1-dev
+RUN apt-get install -y openssh-server supervisor python tmux zsh git vim build-essential python-dev sudo mosh libc6:i386 libncurses5:i386 libstdc++6:i386
+# lxml and other Python deps
+RUN apt-get install -y libxml2-dev libxslt1-dev libffi-dev libssl-dev zlib1g-dev
 
 RUN locale-gen en_US.UTF-8  
 ENV LANG en_US.UTF-8  
