@@ -15,6 +15,7 @@ ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US:en  
 ENV LC_ALL en_US.UTF-8  
 
+RUN mkdir /Users
 RUN useradd -ms /bin/zsh -u 768 -d /Users/mzhafn mzhafn
 RUN addgroup mzhafn sudo
 
