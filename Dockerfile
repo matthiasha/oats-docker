@@ -1,4 +1,4 @@
-FROM ubuntu:16.10
+FROM ubuntu:rolling
 MAINTAINER hafner87@gmail.com
 
 RUN dpkg --add-architecture i386
