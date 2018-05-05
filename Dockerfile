@@ -10,6 +10,10 @@ RUN apt-get install -y libxml2-dev libxslt1-dev libffi-dev libssl-dev zlib1g-dev
 RUN apt-get install -y valgrind
 RUN apt-get install -y command-not-found man-db
 
+# NodeJS
+RUN curl -sL https://deb.nodesource.com/setup_10.x | bash -
+RUN apt install -y nodejs
+
 ENV LANG C.UTF-8
 
 RUN mkdir /Users
