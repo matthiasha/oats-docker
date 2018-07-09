@@ -9,6 +9,8 @@ RUN apt-get install -y libxml2-dev libxslt1-dev libffi-dev libssl-dev zlib1g-dev
 # dev tools
 RUN apt-get install -y valgrind
 RUN apt-get install -y command-not-found man-db
+RUN apt install python3-venv
+RUN apt install python3-dev libffi-dev libpcap-dev  # comms deps
 
 # NodeJS
 RUN curl -sL https://deb.nodesource.com/setup_10.x | bash -
@@ -21,7 +23,7 @@ RUN useradd -ms /bin/zsh -u 768 -d /Users/mzhafn mzhafn
 RUN addgroup mzhafn sudo
 
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
-EXPOSE 22 8888
+EXPOSE 22 8888 9999
 RUN mkdir -p /var/run/sshd
 
 VOLUME /Users/mzhafn
