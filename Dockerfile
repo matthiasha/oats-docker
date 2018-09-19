@@ -25,6 +25,7 @@ RUN addgroup mzhafn sudo
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 EXPOSE 22 8888 9999
 RUN mkdir -p /var/run/sshd
+RUN sed -i "s/UsePAM yes/UsePAM no/g" /etc/ssh/sshd_config  # PAM stops me from logging in
 
 VOLUME /Users/mzhafn
 
