@@ -11,6 +11,7 @@ RUN apt-get install -y valgrind
 RUN apt-get install -y command-not-found man-db
 RUN apt install python3-venv
 RUN apt install python3-dev libffi-dev libpcap-dev  # comms deps
+RUN echo y |unminimize
 
 # NodeJS
 RUN curl -sL https://deb.nodesource.com/setup_10.x | bash -
