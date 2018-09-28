@@ -12,7 +12,7 @@ RUN apt-get install -y command-not-found man-db
 RUN apt-get install -y python3-venv
 RUN apt-get install -y python3-dev libffi-dev libpcap-dev  # comms deps
 RUN apt-get install -y rsync
-RUN echo y |unminimize
+RUN printf "y\ny\n" | unminimize
 
 # NodeJS
 RUN curl -sL https://deb.nodesource.com/setup_10.x | bash -
