@@ -32,10 +32,6 @@ EXPOSE 22 8888 9999
 RUN mkdir -p /var/run/sshd
 RUN sed -i "s/UsePAM yes/UsePAM no/g" /etc/ssh/sshd_config  # PAM stops me from logging in
 
-ADD https://get.docker.com /get-docker.sh
-RUN sh /get-docker.sh
-
 VOLUME /Users/mzhafn
-VOLUME /var/lib/docker
 
 CMD ["/usr/bin/supervisord"]
