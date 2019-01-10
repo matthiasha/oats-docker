@@ -18,6 +18,7 @@ RUN printf "y\ny\n" | unminimize
 RUN curl -sL https://deb.nodesource.com/setup_10.x | bash -
 RUN apt-get install -y nodejs
 
+RUN apt-get install -y locales
 RUN locale-gen en_US.UTF-8
 RUN update-locale
 ENV LANG en_US.UTF-8
