@@ -28,9 +28,14 @@ RUN useradd -ms /bin/zsh -u 768 -d /Users/mzhafn mzhafn
 RUN addgroup mzhafn sudo
 
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
-EXPOSE 22 8888 9999
 RUN mkdir -p /var/run/sshd
 RUN sed -i "s/UsePAM yes/UsePAM no/g" /etc/ssh/sshd_config  # PAM stops me from logging in
+
+RUN wget https://get.docker.com/ -O /tmp/docker.sh
+RUN sh /tmp/docker.sh
+RUN echo "Port 2222" >> /etc/ssh/sshd_config
+
+RUN apt-get install -y net-tools tcpdump iputils-ping
 
 VOLUME /Users/mzhafn
 
