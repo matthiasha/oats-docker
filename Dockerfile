@@ -36,6 +36,7 @@ RUN sh /tmp/docker.sh
 RUN echo "Port 2222" >> /etc/ssh/sshd_config
 
 RUN apt-get install -y net-tools tcpdump iputils-ping
+RUN apt-get install -y pandoc texlive-xetex   # Jupyter PDF creation
 
 VOLUME /Users/mzhafn
 
