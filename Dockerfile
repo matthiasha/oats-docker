@@ -37,6 +37,7 @@ RUN echo "Port 2222" >> /etc/ssh/sshd_config
 
 RUN apt-get install -y net-tools tcpdump iputils-ping
 RUN apt-get install -y pandoc texlive-xetex   # Jupyter PDF creation
+RUN apt-get install -y libavdevice-dev libavfilter-dev libopus-dev libvpx-dev pkg-config  # aiortc deps
 
 VOLUME /Users/mzhafn
 
