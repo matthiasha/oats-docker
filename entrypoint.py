@@ -13,5 +13,6 @@ check_call(['useradd',
             '-u', uid])
 check_call(['addgroup', user, 'sudo'])
 check_call(['addgroup', user, 'docker'])
+check_call(['chown', user, '/var/run/docker.sock'])
 
 os.execv('/usr/bin/supervisord', ['/usr/bin/supervisord'])
