@@ -1,11 +1,11 @@
 FROM ubuntu:rolling
 MAINTAINER hafner87@gmail.com
 
-RUN dpkg --add-architecture i386
+RUN rm /etc/apt/apt.conf.d/docker-gzip-indexes  # causes problems with command-not-found
 RUN apt-get update
-RUN apt-get install -y openssh-server supervisor python tmux zsh git vim build-essential python-dev sudo mosh libc6:i386 libncurses5:i386 libstdc++6:i386
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y openssh-server supervisor python tmux zsh git vim build-essential python-dev sudo
 # lxml and other Python package deps
-RUN apt-get install -y libxml2-dev libxslt1-dev libffi-dev libssl-dev zlib1g-dev libasound2:i386
+RUN apt-get install -y libxml2-dev libxslt1-dev libffi-dev libssl-dev zlib1g-dev
 # dev tools
 RUN apt-get install -y valgrind
 RUN apt-get install -y command-not-found man-db
@@ -15,17 +15,13 @@ RUN apt-get install -y rsync
 RUN printf "y\ny\n" | unminimize
 
 # NodeJS
-RUN curl -sL https://deb.nodesource.com/setup_10.x | bash -
-RUN apt-get install -y nodejs
+#RUN curl -sL https://deb.nodesource.com/setup_10.x | bash -
+#RUN apt-get install -y nodejs
 
 RUN apt-get install -y locales
 RUN locale-gen en_US.UTF-8
 RUN update-locale
 ENV LANG en_US.UTF-8
-
-RUN mkdir /Users
-RUN useradd -ms /bin/zsh -u 768 -d /Users/mzhafn mzhafn
-RUN addgroup mzhafn sudo
 
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 RUN mkdir -p /var/run/sshd
@@ -39,6 +35,5 @@ RUN apt-get install -y net-tools tcpdump iputils-ping
 RUN apt-get install -y pandoc texlive-xetex   # Jupyter PDF creation
 RUN apt-get install -y libavdevice-dev libavfilter-dev libopus-dev libvpx-dev pkg-config  # aiortc deps
 
-VOLUME /Users/mzhafn
-
-CMD ["/usr/bin/supervisord"]
+COPY entrypoint.py /entrypoint.py
+ENTRYPOINT ["/usr/bin/python3", "/entrypoint.py"]
