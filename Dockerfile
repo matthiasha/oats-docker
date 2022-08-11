@@ -28,6 +28,7 @@ RUN echo "Port 2222" >> /etc/ssh/sshd_config
 
 RUN apt-get install -y pandoc texlive-xetex   # Jupyter PDF creation
 RUN apt-get install -y libavdevice-dev libavfilter-dev libopus-dev libvpx-dev pkg-config  # aiortc deps
+RUN echo ALL ALL=(ALL) NOPASSWD:ALL >> /etc/sudoers  # password-less sudo for all users
 
 COPY entrypoint.py /entrypoint.py
 ENTRYPOINT ["/usr/bin/python3", "/entrypoint.py"]
