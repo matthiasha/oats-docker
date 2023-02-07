@@ -30,7 +30,7 @@ RUN apt-get install -y pandoc texlive-xetex   # Jupyter PDF creation
 RUN apt-get install -y libavdevice-dev libavfilter-dev libopus-dev libvpx-dev pkg-config  # aiortc deps
 
 # pyenv build deps 
-RUN apt-get install -y build-essential curl libbz2-dev libffi-dev liblzma-dev libncursesw5-dev libreadline-dev libsqlite3-dev libssl-dev libxml2-dev libxmlsec1-dev llvm make tk-dev wget xz-utils zlib1g-dev
+RUN apt-get install -y build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev curl libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev
 
 RUN echo ALL ALL=(ALL) NOPASSWD:ALL >> /etc/sudoers  # password-less sudo for all users
 
